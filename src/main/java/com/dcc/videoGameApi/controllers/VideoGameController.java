@@ -31,5 +31,9 @@ public class VideoGameController {
         return service.GetById(id);
     }
 
+    @GetMapping("/getBestInvestmentByYear/{year}")
 
+    public String GetInvestmentByYear(@PathVariable Integer year){
+        return service.GetInvestmentByYear(year);
+    }
 }
