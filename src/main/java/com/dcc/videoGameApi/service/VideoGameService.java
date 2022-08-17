@@ -48,7 +48,8 @@ public class VideoGameService {
         List<VideoGame> matchingGames = videoGameRepository.findAll().stream().filter(g-> g.getName().equals(game)).toList();
         List<String> gameConsoles = matchingGames.stream().map(g -> g.getPlatform()).distinct().collect(Collectors.toList());
         for (String console: gameConsoles) {
-
+            Double sales = matchingGames.stream().filter(g->g.getPlatform().equals(console)).mapToDouble(g -> g.getGlobalsales()).sum();
+            consoleSales.put(console, sales);
         }
 
         return consoleSales;
