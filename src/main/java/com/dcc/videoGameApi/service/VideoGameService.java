@@ -61,4 +61,38 @@ public class VideoGameService {
         return searchResults;
     }
 
+    public Map<String, Map<String, Double>> GetPublisherSuccessByConsole(){
+        Map<String, Map<String, Double>> finalMap = new HashMap<>();
+        // Get list of unique console names, and loop through them
+        List<String> gameConsoles = videoGameRepository.findAll().stream().map(g -> g.getPlatform()).distinct().collect(Collectors.toList());
+        for (String console: gameConsoles) {
+            // Create console hashmap
+            Map<String, Double> salesByPublisher = new HashMap<>();
+            // for each console, find all games for that console
+            List<VideoGame> matchingGames = videoGameRepository.findAll().stream().filter(g -> g.getPlatform().equals(console)).toList();
+            // Find a list of unique publishers for that console
+            List<String> consolePublishers = matchingGames.stream().map(g -> g.getPublisher()).distinct().collect(Collectors.toList());
+            //Loop through publishers
+            for (String publisher : consolePublishers) {
+                // Calculate total sales for that publisher, for that console
+                Double sales = matchingGames.stream().filter(g-> g.getPublisher().equals(publisher)).mapToDouble(g -> g.getGlobalsales()).sum();
+                // Put into platform hashmap
+                salesByPublisher.put(publisher, sales);
+            }
+            // Put completed console map into final console publisher map
+            finalMap.put(console, salesByPublisher);
+        }
+        // EX: {"ds": {"activision": 1.0, "hal labs":2.0}}
+        return finalMap;
+    }
+    public Map<String, Double> GetConsolePublisherSuccess(String search){
+        Map<String, Double> finalMap = new HashMap<>();
+        List<String> consolePublishers = videoGameRepository.findAll().stream().filter(g -> g.getPlatform().equals(search)).map(g-> g.getPublisher()).distinct().collect(Collectors.toList());
+        for (String publisher: consolePublishers){
+            Double sales = videoGameRepository.findAll().stream().filter(g->g.getPlatform().equals(search) & g.getPublisher().equals(publisher)).mapToDouble(g -> g.getGlobalsales()).sum();
+            finalMap.put(publisher, sales);
+        }
+        return finalMap;
+    }
+
 }

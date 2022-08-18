@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4f80075a-bf8e-4f21-a2bd-0f5cc02d7988",
+		"_postman_id": "84db6fb3-6099-4948-9de0-4c9739dd6768",
 		"name": "VideoGameAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13455599"
+		"_exporter_id": "12194997"
 	},
 	"item": [
 		{
@@ -59,6 +59,105 @@
 					"port": "8080",
 					"path": [
 						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Console Sales Since Year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getTotalSalesByYear/2011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getTotalSalesByYear",
+						"2011"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/searchGames/Call of Duty: Modern Warfare 3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"searchGames",
+						"Call of Duty: Modern Warfare 3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Game Sales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getGameSales/Call of Duty: Modern Warfare 3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getGameSales",
+						"Call of Duty: Modern Warfare 3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Publisher Success By Console",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/publisherSuccessByConsole/DS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"publisherSuccessByConsole",
+						"DS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Publisher Success By Console",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/publisherSuccessByConsole",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"publisherSuccessByConsole"
 					]
 				}
 			},

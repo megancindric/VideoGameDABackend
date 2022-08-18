@@ -51,4 +51,14 @@ public class VideoGameController {
     public List<VideoGame> SearchGames(@PathVariable String search){
         return service.SearchGames(search);
     }
+
+    @GetMapping("/publisherSuccessByConsole")
+    public Map<String, Map<String, Double>> GetPublisherSuccessByConsole(){
+        return service.GetPublisherSuccessByConsole();
+    }
+
+    @GetMapping("/publisherSuccessByConsole/{search}")
+    public Map<String, Double> GetConsolePublisherSuccess(@PathVariable String search){
+        return service.GetConsolePublisherSuccess(search);
+    }
 }
