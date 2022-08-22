@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class VideoGameController {
@@ -31,5 +33,32 @@ public class VideoGameController {
         return service.GetById(id);
     }
 
+    @GetMapping("/getTotalSalesByYear/{year}")
 
+    public Map<String, Double> GetTotalSalesByYear(@PathVariable Integer year){
+        return service.GetTotalSalesByYear(year);
+    }
+
+    @GetMapping("/getGameSales/{game}")
+
+
+    public Map<String, Double> GetGameSales(@PathVariable String game){
+        return service.GetGameSales(game);
+    }
+
+    @GetMapping("/searchGames/{search}")
+
+    public List<VideoGame> SearchGames(@PathVariable String search){
+        return service.SearchGames(search);
+    }
+
+    @GetMapping("/publisherSuccessByConsole")
+    public Map<String, Map<String, Double>> GetPublisherSuccessByConsole(){
+        return service.GetPublisherSuccessByConsole();
+    }
+
+    @GetMapping("/publisherSuccessByConsole/{search}")
+    public Map<String, Double> GetConsolePublisherSuccess(@PathVariable String search){
+        return service.GetConsolePublisherSuccess(search);
+    }
 }
